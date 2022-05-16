@@ -7,7 +7,7 @@ import Web.MyDriver;
 import org.testng.Assert;
 import org.testng.annotations.Test;
 
-public class login {
+public class Login {
 
     // Verify user can login with valid credentials
     @Test
