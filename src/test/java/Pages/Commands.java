@@ -1,20 +1,42 @@
-package Pages.Facebook;
+package Pages;
 
 import Helper.DateLib;
 import Web.MyDriver;
+import com.google.common.base.Function;
 import org.openqa.selenium.*;
+import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
+import org.openqa.selenium.support.ui.Wait;
 import org.testng.Assert;
 
+import java.time.Duration;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
 
 public class Commands {
+    Alert myAlert;
 
     // Create a local method to find WebElement
     public WebElement findWebElement(By locator) {
         return MyDriver.getDriver().findElement(locator);
+    }
+
+    public WebElement findWebElementWithWait(By locator) {
+        Wait fWait = new FluentWait(MyDriver.getDriver())
+                .withTimeout(Duration.ofSeconds(30))
+                .pollingEvery(Duration.ofSeconds(1))
+                .ignoring(NoAlertPresentException.class)
+                .ignoring(StaleElementReferenceException.class)
+                .ignoring(ElementClickInterceptedException.class)
+                .withMessage("Fluent wait timeout, waited for 30-seconds");
+
+        WebElement element = (WebElement) fWait.until(new Function<WebDriver, WebElement>() {
+            public WebElement apply(WebDriver driver) {
+                return driver.findElement(locator);
+            }
+        });
+        return element;
     }
 
     // Create a local method to find WebElements
@@ -68,7 +90,11 @@ public class Commands {
 
     // Create a local method to find if element is displayed
     public boolean isElementDisplayed(By locator) {
-        return findWebElement(locator).isDisplayed();
+        return findWebElementWithWait(locator).isDisplayed();
+    }
+
+    public String getPageSource(){
+        return MyDriver.getDriver().getPageSource();
     }
 
     // Create custom method to scroll
@@ -175,6 +201,39 @@ public class Commands {
     public boolean isItSelected(By locator){
        return findWebElement(locator).isSelected();
 
+    }
+    public void switchToAlert() {
+//        WebDriverWait eWait = new WebDriverWait(MyDriver.getDriver(), 5);
+//        eWait.until(ExpectedConditions.alertIsPresent());
+        myAlert = MyDriver.getDriver().switchTo().alert();
+    }
+
+    public void clickPositiveActionBtnOnAlert() {
+        if(myAlert == null) {
+            switchToAlert();
+        }
+        myAlert.accept();
+    }
+
+    public void clickNegativeActionBtnOnAlert() {
+        if(myAlert == null) {
+            switchToAlert();
+        }
+        myAlert.dismiss();
+    }
+
+    public String getTextFromAlert() {
+        if(myAlert == null) {
+            switchToAlert();
+        }
+        return myAlert.getText();
+    }
+
+    public void typeInAlert(String data) {
+        if(myAlert == null) {
+            switchToAlert();
+        }
+        myAlert.sendKeys(data);
     }
 
 }

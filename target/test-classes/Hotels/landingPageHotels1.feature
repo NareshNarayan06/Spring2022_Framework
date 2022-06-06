@@ -1,5 +1,9 @@
+
 Feature: Hotels Homepage
 
+  #Background:
+   # Given User launch hotels homepage
+@Hotels
   Scenario: Verify destination error displayed if search with no destination
   Given User launch hotels homepage
   When User click on the search bar
@@ -20,19 +24,6 @@ Feature: Hotels Homepage
 
 
 
-
-
-
-
-
-
-
-    #* hotels.com
-   # * Verify enter-children's age error is displayed as soon user add a child
-   # * and, error is NOT displayed as soon user enter's children's age
-
-   # * After click Search button
-   # * Also, verify numbers of travelers before and after is the same.
 
 
 

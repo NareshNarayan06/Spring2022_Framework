@@ -1,6 +1,7 @@
 package Web;
 
 
+import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 
@@ -26,6 +27,7 @@ public class MyDriver {
 
     }
 
+    @After
     public static void quitWindow(){
         driver.quit();
     }

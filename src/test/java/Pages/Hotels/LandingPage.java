@@ -1,6 +1,7 @@
 package Pages.Hotels;
 
-import Pages.Facebook.Commands;
+import Helper.Misc;
+import Pages.Commands;
 import Web.MyDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
@@ -18,7 +19,7 @@ public class LandingPage extends Commands {
 
     By travellerBoxLocator = By.xpath("//button[contains(text(),'1 room, 2 travelers')]");
     By childrenAddButtonLocator = By.xpath("(//span[contains(@class,'input-button')])[4]");
-    By childErrorMsgLocator = By.xpath("//h3[contains(text(),'ages of children')]");
+    By childErrorMsgLocator = By.xpath("//*[text()='Please provide the ages of children.']");
     By childAgeDropDownLocator = By.id("child-age-input-0-0");
     By childAgeDropDownElementsLocator = By.xpath("//select[@id='child-age-input-0-0']//option[text()]");
 
@@ -106,7 +107,23 @@ public class LandingPage extends Commands {
         return isElementDisplayed(childErrorMsgLocator);
     }
 
-    public void clickAndSelectAgeFromDd(String age) {
+
+
+    public boolean isChildMsgDisplayed() {
+        boolean isItDisplay = false;
+        String msgDisplayed = "Please provide the ages of children.";
+         if (getPageSource().contains(msgDisplayed)) {
+                isItDisplay = true;
+            } else
+                isItDisplay = false;
+            return isItDisplay;
+        }
+
+
+
+
+
+        public void clickAndSelectAgeFromDd(String age){
         List<WebElement> ageElements = findWebElements(childAgeDropDownElementsLocator);
         for (WebElement ages : ageElements) {
 
@@ -115,7 +132,6 @@ public class LandingPage extends Commands {
                 ages.click();
             }
         }
-
 
     }
 }

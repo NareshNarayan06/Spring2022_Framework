@@ -5,7 +5,7 @@ Feature: Facebook Homepage
     When User Close ALL windows except Instagram
     Then User verify number of window-Handles equals 1
 
-
+@firstUp
 Scenario: Verify page title is Instagram
   Given User launch facebook homepage
   When User click on Facebook Pay, Oculus, Instagram, Portal and Bulletin
