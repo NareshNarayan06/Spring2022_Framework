@@ -58,12 +58,12 @@ public class Commands {
     }
 
     public String getAttributeValueFromWebElement(By locator, String attribute) {
-        return findWebElement(locator).getText();
+        return findWebElement(locator).getAttribute(attribute);
     }
 
     // Create a local method to click on the webElement
     public void clickIt(By locator) {
-        findWebElement(locator).click();
+        findWebElementWithWait(locator).click();
     }
 
     //Method to get text of element
@@ -75,6 +75,7 @@ public class Commands {
     public void clickItWithScroll(By locator) {
         scrollToElement(locator).click();
     }
+
 
     // Create a local method to find if element is enabled
     public boolean isElementEnabled(By locator) {
@@ -90,7 +91,7 @@ public class Commands {
 
     // Create a local method to find if element is displayed
     public boolean isElementDisplayed(By locator) {
-        return findWebElementWithWait(locator).isDisplayed();
+        return findWebElement(locator).isDisplayed();
     }
 
     public String getPageSource(){
@@ -102,7 +103,7 @@ public class Commands {
         WebElement element = null;
         for (int i=0 ; i <= 20 ; i++) {
             try {
-                element = findWebElement(locator);
+                element = findWebElementWithWait(locator);
                 break;
             } catch (ElementClickInterceptedException | NoSuchElementException e) {
                 //scroll by 100
@@ -111,6 +112,20 @@ public class Commands {
             }
         }
         return element;
+    }
+
+    public void scrollToElementWithOutClick(By locator){
+        WebElement element = null;
+        for (int i=0 ; i <= 20 ; i++) {
+            try {
+                element = findWebElementWithWait(locator);
+                break;
+            } catch (ElementClickInterceptedException | NoSuchElementException e) {
+                //scroll by 100
+                JavascriptExecutor js =  (JavascriptExecutor) MyDriver.getDriver();
+                js.executeScript("scrollBy(0,100)");
+            }
+        }
     }
 
     public void verifyIsEquals(String element1,String element2){
@@ -159,26 +174,26 @@ public class Commands {
     }
 
 
-    public void scrollToButtonDarkSky(By locator){
-        for (int i = 0; i <= 15; i++) {
+    public void scrollToButton(By locator){
+        for (int i = 0; i <= 25; i++) {
             try {
-                findWebElement(locator);
+                findWebElementWithWait(locator);
                 break;
             } catch (ElementClickInterceptedException | NoSuchElementException e) {
                 JavascriptExecutor jsE = (JavascriptExecutor) MyDriver.getDriver();
-                jsE.executeScript("scrollBy(0,100)");
+                jsE.executeScript("scrollBy(0,1000)");
             }
         }
     }
 
     public void scrollAndClickToButtonDarkSky(By locator){
-        for (int i = 0; i <= 15; i++) {
+        for (int i = 0; i <= 20; i++) {
             try {
-                findWebElement(locator).click();
+                findWebElementWithWait(locator);
                 break;
             } catch (ElementClickInterceptedException | NoSuchElementException e) {
                 JavascriptExecutor jsE = (JavascriptExecutor) MyDriver.getDriver();
-                jsE.executeScript("scrollBy(0,100)");
+                jsE.executeScript("scrollBy(0,200)");
             }
         }
     }
@@ -235,5 +250,37 @@ public class Commands {
         }
         myAlert.sendKeys(data);
     }
+
+    // Custom method/function to switch on Frame using iframe-id
+    public void switchToFrame (String frameId) {
+        MyDriver.getDriver().switchTo().frame(frameId);
+    }
+
+    // Custom method/function to switch on Frame using iframe-element
+    public void switchToFrame (By locator) {
+        WebElement myFrame = findWebElement(locator);
+        MyDriver.getDriver().switchTo().frame(myFrame);
+    }
+
+    // Custom method/function to switch on Frame using iframe-index
+    public void switchToFrame (int frameIndex) {
+        MyDriver.getDriver().switchTo().frame(frameIndex);
+    }
+
+    public void switchToMainWindowFromFrame () {
+        MyDriver.getDriver().switchTo().defaultContent();
+    }
+
+    public void scrollIntoElementToView(By locator){
+        WebElement element = MyDriver.getDriver().findElement(locator);
+        JavascriptExecutor jS = (JavascriptExecutor) MyDriver.getDriver();
+        jS.executeScript("arguments[0].scrollIntoView();",element);
+    }
+
+
+
+
+
+
 
 }
