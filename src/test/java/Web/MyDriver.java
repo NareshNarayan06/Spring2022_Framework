@@ -27,7 +27,7 @@ public class MyDriver {
 
     }
 
-    @After
+
     public static void quitWindow(){
         driver.quit();
     }

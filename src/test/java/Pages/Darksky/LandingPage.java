@@ -43,7 +43,7 @@ public class LandingPage extends Commands {
     }
 
     public void scrollAndClickTimeMachineButton(){
-        scrollToButtonDarkSky(timeMachineLocator);
+        scrollToButton(timeMachineLocator);
     }
 
     public String findTextFromTimeMachine(){

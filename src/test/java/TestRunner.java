@@ -11,7 +11,7 @@ import org.junit.runner.RunWith;
         glue = {"StepDefinition", "Web"},
 
         // tag to be executed
-         tags = "@Hotels",
+         tags = "@TC-18",
         /*
             To run the test runner file from the command line
             use below command:

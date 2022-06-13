@@ -3,31 +3,20 @@
     "line": 2,
     "elements": [
       {
-        "start_timestamp": "2022-06-06T14:08:11.871Z",
-        "line": 7,
-        "name": "Verify destination error displayed if search with no destination",
+        "start_timestamp": "2022-06-07T15:05:53.500Z",
+        "line": 39,
+        "name": "Verify user can update number of guests in hotels homepage",
         "description": "",
-        "id": "hotels-homepage;verify-destination-error-displayed-if-search-with-no-destination",
-        "after": [
-          {
-            "result": {
-              "duration": 141967000,
-              "status": "passed"
-            },
-            "match": {
-              "location": "Web.MyDriver.quitWindow()"
-            }
-          }
-        ],
+        "id": "hotels-homepage;verify-user-can-update-number-of-guests-in-hotels-homepage",
         "type": "scenario",
         "keyword": "Scenario",
         "steps": [
           {
             "result": {
-              "duration": 21938328000,
+              "duration": 23815786000,
               "status": "passed"
             },
-            "line": 8,
+            "line": 40,
             "name": "User launch hotels homepage",
             "match": {
               "location": "StepDefinition.Hotels.HomePageSD.launchHotelsSD()"
@@ -36,32 +25,80 @@
           },
           {
             "result": {
-              "duration": 1926991000,
+              "duration": 1835691000,
               "status": "passed"
             },
-            "line": 9,
-            "name": "User click on the search bar",
+            "line": 41,
+            "name": "User click on the hotels traveller text box",
             "match": {
-              "location": "StepDefinition.Hotels.HomePageSD.clickOnSearchBarSD()"
+              "location": "StepDefinition.Hotels.HomePageSD.clickTravellerTextBoxSD()"
             },
             "keyword": "When "
           },
           {
             "result": {
-              "duration": 131936000,
+              "duration": 553336000,
               "status": "passed"
             },
-            "line": 10,
-            "name": "User verify destination error displayed if search with no destination",
+            "line": 42,
+            "name": "User select number of adults as 6 on hotels guest page by clicking add button next to \u0027Adults\u0027",
             "match": {
-              "location": "StepDefinition.Hotels.HomePageSD.verifyErrorMessageDisplayedSD()"
+              "location": "StepDefinition.Hotels.HomePageSD.selectingTheNumberOfAdults()"
             },
-            "keyword": "Then "
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 554502000,
+              "status": "passed"
+            },
+            "line": 43,
+            "name": "User select number of children as 2 on hotels guest page by clicking add button next to children",
+            "match": {
+              "location": "StepDefinition.Hotels.HomePageSD.selectingNumberOfChildren()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 326682000,
+              "status": "passed"
+            },
+            "line": 44,
+            "name": "User click the first child button and select age \u00274\u0027 from drop down on hotels guest page",
+            "match": {
+              "location": "StepDefinition.Hotels.HomePageSD.clickAndSelectFirstChildButton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 371930000,
+              "status": "passed"
+            },
+            "line": 45,
+            "name": "User click the second child button and select age \u0027under 1\u0027 from drop down on hotels guest page",
+            "match": {
+              "location": "StepDefinition.Hotels.HomePageSD.clickAndSelectAgeForSecondChildButton()"
+            },
+            "keyword": "When "
+          },
+          {
+            "result": {
+              "duration": 113695000,
+              "status": "passed"
+            },
+            "line": 46,
+            "name": "User click on the hotels done button inside the traveller",
+            "match": {
+              "location": "StepDefinition.Hotels.HomePageSD.clickingDoneFromTravellers()"
+            },
+            "keyword": "When "
           }
         ],
         "tags": [
           {
-            "name": "@Hotels"
+            "name": "@TC-18"
           }
         ]
       }
