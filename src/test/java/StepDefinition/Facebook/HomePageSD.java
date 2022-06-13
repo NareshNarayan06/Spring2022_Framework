@@ -1,7 +1,7 @@
 package StepDefinition.Facebook;
 
 import Helper.Misc;
-import Pages.Facebook.Commands;
+import Pages.Commands;
 import Pages.Facebook.LandingPage;
 import Web.MyDriver;
 import io.cucumber.java.en.Given;

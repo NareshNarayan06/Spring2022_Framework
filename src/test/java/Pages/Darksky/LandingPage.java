@@ -2,7 +2,7 @@ package Pages.Darksky;
 
 import Helper.DateLib;
 import Helper.Misc;
-import Pages.Facebook.Commands;
+import Pages.Commands;
 import Web.MyDriver;
 import org.openqa.selenium.*;
 import org.testng.Assert;

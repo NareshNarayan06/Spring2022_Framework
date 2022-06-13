@@ -2,6 +2,7 @@ package Pages.Facebook;
 
 
 import Helper.Misc;
+import Pages.Commands;
 import Web.MyDriver;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;

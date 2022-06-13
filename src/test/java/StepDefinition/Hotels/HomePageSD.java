@@ -48,9 +48,7 @@ public class HomePageSD {
 
     @Then("^User verify error is NOT displayed as soon user enter children's age$")
     public void childErrorDisplayedAfterAgeSD(){
-        Assert.assertFalse(lPage.childErrorMsgDisplayed(),"error message is displayed");
+        Assert.assertFalse(lPage.isChildMsgDisplayed(),"error message is displayed");
     }
-
-
 
 }

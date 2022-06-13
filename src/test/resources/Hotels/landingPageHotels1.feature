@@ -1,5 +1,9 @@
+
 Feature: Hotels Homepage
 
+  #Background:
+   # Given User launch hotels homepage
+@Hotels
   Scenario: Verify destination error displayed if search with no destination
   Given User launch hotels homepage
   When User click on the search bar
