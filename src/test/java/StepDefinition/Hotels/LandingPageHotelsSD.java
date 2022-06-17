@@ -88,19 +88,19 @@ public class LandingPageHotelsSD {
         lPage.clickCheckOutButtonInsideCal();
     }
 
-    @When("^User select number of adults as 6 on hotels guest page by clicking add button next to 'Adults'$")
-    public void selectingTheNumberOfAdults() {
-        lPage.selectNumberOfAdults(6);
+    @When("^User select number of adults as (.+) on hotels guest page by clicking add button next to 'Adults'$")
+    public void selectingTheNumberOfAdults(int num) {
+        lPage.selectNumberOfAdults(num);
     }
 
-    @When("^User select number of children as 2 on hotels guest page by clicking add button next to children$")
-    public void selectingNumberOfChildren() {
-        lPage.selectChild(2);
+    @When("^User select number of children as (.+) on hotels guest page by clicking add button next to children$")
+    public void selectingNumberOfChildren(int num) {
+        lPage.selectChild(num);
     }
 
-    @When("^User click the first child button and select age '4' from drop down on hotels guest page$")
-    public void clickAndSelectFirstChildButton() {
-        lPage.clickAndSelectAgeFromDd("4");
+    @When("^User click the first child button and select age '(.+)' from drop down on hotels guest page$")
+    public void clickAndSelectFirstChildButton(String age) {
+        lPage.clickAndSelectAgeFromDd(age);
     }
 
     @When("^User click the second child button and select age 'under 1' from drop down on hotels guest page$")
