@@ -1,9 +1,12 @@
 package Web;
 
 
+import Helper.Misc;
 import io.cucumber.java.After;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+
+import java.util.concurrent.TimeUnit;
 
 
 public class MyDriver {
@@ -16,7 +19,7 @@ public class MyDriver {
         System.setProperty("webdriver.chrome.driver","./Drivers/chromedriver");
 
         driver= new ChromeDriver();
-
+        driver.manage().timeouts().implicitlyWait(5, TimeUnit.SECONDS);
         driver.get(url);
 
         try {
@@ -24,6 +27,7 @@ public class MyDriver {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
+
 
     }
 

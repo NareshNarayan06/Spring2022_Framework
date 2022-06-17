@@ -4,6 +4,7 @@ import Helper.DateLib;
 import Web.MyDriver;
 import com.google.common.base.Function;
 import org.openqa.selenium.*;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.FluentWait;
 import org.openqa.selenium.support.ui.Select;
 import org.openqa.selenium.support.ui.Wait;
@@ -63,7 +64,7 @@ public class Commands {
 
     // Create a local method to click on the webElement
     public void clickIt(By locator) {
-        findWebElementWithWait(locator).click();
+       findWebElement(locator).click();
     }
 
     //Method to get text of element
@@ -87,6 +88,11 @@ public class Commands {
         WebElement ddElement = findWebElement(locator);
         Select dropdown = new Select(ddElement);
         dropdown.selectByVisibleText(dataToSelect);
+    }
+
+    public void doubleClick(WebElement element){
+        Actions action = new Actions(MyDriver.getDriver());
+        action.doubleClick(element).build().perform();
     }
 
     // Create a local method to find if element is displayed
@@ -275,6 +281,10 @@ public class Commands {
         WebElement element = MyDriver.getDriver().findElement(locator);
         JavascriptExecutor jS = (JavascriptExecutor) MyDriver.getDriver();
         jS.executeScript("arguments[0].scrollIntoView();",element);
+    }
+
+    public void navigateBack(){
+        MyDriver.getDriver().navigate().back();
     }
 
 

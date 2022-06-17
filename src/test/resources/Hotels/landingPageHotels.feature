@@ -25,15 +25,11 @@ Feature: Hotels Homepage
     @TC-17
   Scenario: Verify past dates and back button are disabled on the current month calendar
       Given User launch hotels homepage
-      When User click on the hotels check-in button
-      When User click on the hotels check-in button inside the calendar
+      When User click on the hotels Dates button
       Then User verify past dates are disabled on the hotels current month calendar
       Then User verify back button on hotels current month is disabled
       When User click the done button under the hotels calendar
-      When User click on the hotels check-out button
-      When User click on the hotels check-out button inside the calendar
-      Then User verify past dates are disabled on the hotels current month calendar
-      Then User verify back button on hotels current month is disabled
+
 
       @TC-18
       Scenario: Verify user can update number of guests in hotels homepage
@@ -52,10 +48,8 @@ Feature: Hotels Homepage
         Given User launch hotels homepage
         When User click and enter Bora in hotels search box
         When User select Bora Bora from hotels auto suggestion
-        When User click on the hotels check-in button
+        When User click on the hotels Dates button
         When User select date 1 August 2022 from hotels check-in calendar
-        When User click the done button under the hotels calendar
-        When User click on the hotels check-out button
         When User select the date 10 August 2022 from hotels check-out calendar
         When User click the done button under the hotels calendar
         When User click on the hotels search bar
@@ -92,6 +86,75 @@ Feature: Hotels Homepage
           When User click on the hotels feedback button
           When User click on the submit button in hotels feedback page
           Then User Verify error is displayed when user submits the empty feedback form
+
+
+        @TC-22
+        Scenario: Verify error message for invalid data in SignUp form
+          Given User launch hotels homepage
+          When User click on the hotels sign-in link
+          When User click on the hotels sign-up button
+          When User enter #!@### in hotels sign-up email address box
+          When User enter !@ in hotels sign-up first name box
+          When User enter %^& in hotels sign-up last name box
+          When User enter 1234 in hotels sign-up password box
+          Then User verify error is displayed 'Enter a valid email address' hotels sign-up page
+          Then User verify error is displayed 'First name cannot contain special characters' hotels sign-up page
+          Then User verify error is displayed 'Last name cannot contain special characters' hotels sign-up page
+          Then User verify 'Keep me signed in' checkbox on hotels sign-up page is displayed
+          Then User verify 'Keep me signed in' checkbox on hotels sign-up page is enabled
+          Then User verify 'Continue' button on hotels sign-up page is displayed
+          Then User verify 'Continue' button on hotels sign-up page is not enabled
+
+       @TC-23
+       Scenario: Verify filter-by and sort-by functionality works as expected
+         Given User launch hotels homepage
+         When User click and enter Manhattan in hotels search box
+         When User select Manhattan from hotels auto suggestion
+         When User click on the hotels Dates button
+         When User select date 10 August 2022 from hotels check-in calendar
+         When User select the date 15 August 2022 from hotels check-out calendar
+         When User click the done button under the hotels calendar
+         When User click on the hotels search bar
+         When User click on the 5 star on the hotels star ratings from 1 to 5
+         When User select Price from hotels sort-by dropdown
+         Then User verify all hotels in search results are five star rated as selected in above step
+         Then User verify all hotels are listed in increasing order of the price
+
+       @TC-25
+       Scenario: Verify user can submit feedback after completing the feedback form
+         Given User launch hotels homepage
+         When User click on the hotels sign-in link
+         When User click on the hotels feedback button
+         When User select 3 star rating on the hotels feedback form
+         When User enter its not up to the mark on feedback form comment box
+         When User select Unsure option for How likely are you to return to Hotels.com
+         When User select Yes answer for Prior to this visit have you ever booked on Hotels.com
+         When User select No answer for Did you accomplish what you wanted to do on Hotels.com
+         When User click on the submit button in hotel feedback page
+         Then User verify THANK YOU FOR YOUR FEEDBACK is displayed
+
+       @TC-26
+       Scenario: Verify links on Deals page
+         Given User launch hotels homepage
+         When User click on more travel button on hotels
+         When User select Deals from more travel dropdown on hotels
+         Then User verify Manage your booking anytime, anywhere is displayed
+         Then User verify Manage your booking anytime, anywhere is enabled
+         Then User verify Stay Flexible with free cancellation is displayed
+         Then User verify Stay Flexible with free cancellation is enabled
+         Then User verify Save on your next trip to the great outdoors is displayed
+         Then User verify Save on your next trip to the great outdoors is enabled
+         When User click Manage your booking anytime, anywhere on hotels
+         Then User Verify Search, book and Save on the go title is displayed
+         When User go back to deals on hotels
+         When User click on Stay Flexible with free cancellation on hotels
+         Then User verify Amazing deals with free cancellation is displayed
+         When User go back to deals on hotels
+         When User click on Save on your next trip to the great outdoors
+         Then User verify Save on your next trip to the great outdoors title is displayed
+
+
+
 
 
 
